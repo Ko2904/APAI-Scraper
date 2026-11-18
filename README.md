@@ -10,7 +10,7 @@ source .venv/bin/activate
 python -m pip install -r requirements.txt
 ```
 
-For Supabase features, create a project and run [`schema.sql`](schema.sql) in the Supabase SQL Editor. Copy `.env.example` to `.env` and set your project URL and **server-side secret/service-role key**. Do not commit `.env` or expose this key in a browser. The app loads `.env` automatically.
+For Supabase features, create a project and run [`schema.sql`](schema.sql) in the Supabase SQL Editor. It creates the tables and grants the server-side `service_role` the permissions the scraper needs; rerun it to apply schema updates. Copy `.env.example` to `.env` and set your project URL and **server-side secret/service-role key** (not the publishable key). Do not commit `.env` or expose this key in a browser. The app loads `.env` automatically.
 
 ## Step 1: run the isolated scraper
 
@@ -52,7 +52,7 @@ The schema separates the current book record, scrape-run metadata, and price cha
 With Supabase configured, run:
 
 ```bash
-streamlit run app.py
+.venv/bin/streamlit run app.py
 ```
 
 The dashboard lists stored books, charts recorded price changes, and can launch a scrape. Leave it on a small page limit while testing, then increase it as desired.

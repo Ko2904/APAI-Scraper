@@ -33,3 +33,7 @@ create table if not exists public.price_history (
 
 create index if not exists price_history_book_observed_idx
     on public.price_history (book_id, observed_at desc);
+
+grant select, insert, update, delete
+    on table public.books, public.scrape_runs, public.price_history
+    to service_role;
